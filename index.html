@@ -11,3 +11,29 @@
     <h1>test</h1>
   </body>
 </html>
+<!-- Google Tag Base Code (In the <head> section) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=TAG_ID"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'TAG_ID');
+</script>
+
+<!-- Test Button & Event Code (In the <body> section) -->
+<button id="test-conversion">Trigger Test Conversion</button>
+
+<script>
+  document.getElementById('test-conversion').addEventListener('click', function() {
+    // 1. Pass the user data for Enhanced Conversions
+    gtag('set', 'user_data', {
+      "email": "testuser@example.com"
+    });
+
+    // 2. Trigger your conversion event
+    gtag('event', 'conversion', {
+        'send_to': 'TAG_ID/CONVERSION_LABEL'
+    });
+  });
+</script>
